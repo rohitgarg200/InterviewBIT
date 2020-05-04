@@ -1,0 +1,24 @@
+int Solution::adjacent(vector<vector<int> > &A) {
+    int ret=0;
+    if(A[0].size()>3){
+        A[0][2]+=max(A[0][0],A[1][0]);
+        A[1][2]+=max(A[0][0],A[1][0]);
+        ret=max(A[0][2],A[1][2]);
+    for(int i=3;i<A[0].size();i++){
+        A[0][i]+=max(A[0][i-3],max(A[1][i-3],max(A[0][i-2],A[1][i-2])));
+        A[1][i]+=max(A[0][i-3],max(A[1][i-3],max(A[0][i-2],A[1][i-2])));
+        
+        
+        ret=max(ret,max(A[0][i],A[1][i]));
+        
+    }
+  
+    return ret;
+    }    
+    for(int i=0;i<A[0].size();i++){
+        ret=max(ret,max(A[0][i],A[1][i]));
+    }
+    if(A[0].size()==3)
+    ret=max(ret,max(A[0][2],A[1][2])+max(A[0][0],A[1][0]));
+    return ret;
+}

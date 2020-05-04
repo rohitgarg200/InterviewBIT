@@ -1,0 +1,34 @@
+int Solution::evalRPN(vector<string> &A) {
+    vector<int>a;
+    for(int i=0;i<A.size();i++){
+        if(A[i][A[i].size()-1]!='+' &&A[i][A[i].size()-1]!='-'&&A[i][A[i].size()-1]!='*'&&A[i][A[i].size()-1]!='/'){
+            string t="";
+            for(int j=0;j<A[i].size();j++){
+                t+=A[i][j];
+            }
+            int y=stoi(t);
+            a.push_back(y);
+            
+        }else{
+            int b=a[a.size()-1];
+            int c=a[a.size()-2];
+            if(A[i][0]=='-'){
+                a[a.size()-2]=c-b;
+            }
+            else if(A[i][0]=='+'){
+                a[a.size()-2]=c+b;
+            }else if(A[i][0]=='*'){
+                a[a.size()-2]=c*b;
+            }
+            else{
+                if(b!=0)
+                a[a.size()-2]=c/b;
+                else
+                a[a.size()-2]=c;
+            }
+            a.pop_back();
+        }
+        
+    }
+    return a[0];
+}

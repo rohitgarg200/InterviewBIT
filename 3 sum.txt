@@ -1,0 +1,36 @@
+int Solution::threeSumClosest(vector<int> &A, int B) {
+    int p1=0,p2=A.size()-1;
+    sort(A.begin(),A.end());
+    int target=B;
+    int sum1=A[0]+A[1]+A[2],min1=abs(target-A[0]-A[1]-A[2]);
+    
+    for(int i=0;i<A.size();i++){
+        int j=i+1;
+        int k=p2;
+        while(j<k){
+            int sum=A[i]+A[j]+A[k];
+            if(abs(B-sum)<min1){
+                min1=abs(B-sum);
+                sum1=sum;
+            }
+            if(B-sum>0){
+                j++;
+            }
+            if(B-sum<0){
+                k--;
+            }
+            if(B-sum==0){
+                return sum1;
+            }
+        }
+        
+        
+    }
+    
+    return sum1;
+    
+    
+    
+    
+   
+}

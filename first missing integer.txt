@@ -1,0 +1,17 @@
+int Solution::firstMissingPositive(vector<int> &A) {
+vector<bool>a(A.size()+1,0);
+for(int i=0;i<A.size();i++){
+    if(A[i]>0 && A[i]<=A.size())
+    a[A[i]]=1;
+}
+for(int i=1;i<=A.size()+1;i++){
+    if(!a[i]){
+        return i;
+}
+    
+}
+    
+    
+    
+    
+}

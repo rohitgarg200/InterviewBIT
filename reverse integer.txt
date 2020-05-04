@@ -1,0 +1,38 @@
+int Solution::reverse(int A) {
+
+    
+    
+    int count=0;
+    if(A<0){
+        A=-A;
+        count=1;
+    }
+    if(A<=9 ){
+        if(count==0)
+        return A;
+        if(count==1){
+            return -A;
+        }
+    }
+    int y=log10(A);
+    long long int z=0;
+    long long int c=A;
+    long long int c2=pow(10,y);
+    while(y!=-1){
+        int c1=c%10;
+        c=c/10;
+        z+=c1*c2;
+        c2=c2/10;
+        y--;
+    }
+    
+    if(z<-2147483648 || z>2147483647){
+        return 0;
+    }
+    
+    
+    if(count==0)
+    return z;
+    return -z;
+    
+}

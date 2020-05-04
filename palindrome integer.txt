@@ -1,0 +1,23 @@
+int Solution::isPalindrome(int A) {
+    if(A<0){
+        return 0;
+    }
+    if(A<=9){
+        return 1;
+    }
+    int y=log10(A);
+    int z=0;
+    int c=A;
+    int c2=pow(10,y);
+    while(y!=-1){
+        int c1=c%10;
+        c=c/10;
+        z+=c1*c2;
+        c2=c2/10;
+        y--;
+    }
+    if(A==z){
+        return 1;
+    }
+    return 0;
+}

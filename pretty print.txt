@@ -1,0 +1,22 @@
+vector<vector<int> > Solution::prettyPrint(int A) {
+    vector<vector<int>>a(2*A-1,vector<int>(2*A-1,0));
+    int m=A-1,n=A-1;
+    a[m][n]=1;
+    for(int i=1;i<A;i++){
+        for(int j=m-i;j<=m+i;j++){
+            a[j][n-i]=i+1;
+            a[j][n+i]=i+1;
+            a[n-i][j]=i+1;
+            a[n+i][j]=i+1;
+        }
+        
+    }
+    
+    
+    return a;
+    
+    
+}
+
+
+

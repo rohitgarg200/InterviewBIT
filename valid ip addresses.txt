@@ -1,0 +1,35 @@
+vector<string> Solution::restoreIpAddresses(string A) {
+    vector<string>c;
+    if(A.length()<4){
+        return c;
+    }
+    
+    for(int i=1;i<=3;i++){
+        if(i<=A.length() && stoi(A.substr(0,i))>=0 &&stoi(A.substr(0,i))<=255 && (A[0]!='0' ||((stoi(A.substr(0,i) )==0) && i==1))){
+        for(int j=1;j<=3;j++){
+            if(i+j<=A.length() &&stoi(A.substr(i,j))>=0 &&stoi(A.substr(i,j))<=255 && (A[i]!='0' ||(stoi(A.substr(i,j))==0 && j==1))){
+            for(int k=1;k<=3;k++){
+                if(i+j+k<=A.length() && stoi(A.substr(i+j,k))>=0 &&stoi(A.substr(i+j,k))<=255 && (A[j+i]!='0' ||(stoi(A.substr(j+i,k))==0 && k==1))){
+                for(int l=1;l<=3;l++){
+                    if(i+j+k+l==A.size() && stoi(A.substr(i+j+k,l))>=0 &&stoi(A.substr(i+j+k,l))<=255 && (A[i+j+k]!='0' ||(stoi(A.substr(i+j+k,l))==0 && l==1))){
+                               
+                               c.push_back(A.substr(0,i) +'.' +A.substr(i,j) +'.'+A.substr(j+i,k) +'.'+A.substr(i+j+k,l));
+                           }
+                }}
+                    }
+                    
+                    
+                    
+                    
+                }
+            }
+        }
+    }
+    
+    return c;
+    
+    
+    
+    
+    
+}

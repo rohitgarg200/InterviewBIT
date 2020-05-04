@@ -1,0 +1,30 @@
+
+int check(int y){
+    if(y<=3){
+        return 1;
+    }
+    for(int i=2;i<=sqrt(y);i++){
+        if(y%i==0){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+vector<int> Solution::primesum(int A) {
+    int k=2;
+    int l=A-2;
+    while(!check(k) || !check(l)){
+        k=k+1;
+        l=l-1;
+       
+    }
+    vector<int>a;
+    a.push_back(min(k,l));
+    a.push_back(max(k,l));
+    return a;
+    
+    
+    
+    
+}

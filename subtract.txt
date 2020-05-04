@@ -1,0 +1,40 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+ListNode* Solution::subtract(ListNode* A) {
+    vector<int>a;
+    if(A==NULL || A->next==NULL){
+        return A;
+    }
+    ListNode* temp=A;
+    ListNode* temp1=A;
+    int count=0;
+    while(temp1!=NULL && temp1->next!=NULL){
+        temp=temp->next;
+        count++;
+        temp1=temp1->next->next;
+    }
+    // cout<<count<<" "<<temp->val<<" ";
+    temp1=A;
+    
+   // cout<<temp->val;
+    while(temp!=NULL){
+        a.push_back(temp->val);
+        temp=temp->next;
+    }
+    int i=a.size()-1;
+    while(i>=0 && temp1!=NULL && count!=0){
+        temp1->val=a[i]-temp1->val;
+        i=i-1;
+        temp1=temp1->next;
+        count--;
+    }
+    return A;
+    
+    
+}

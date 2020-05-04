@@ -1,0 +1,33 @@
+string Solution::solve(string A) {
+    string t="";
+    vector<string>a;
+    
+    
+    for(int i=0;i<A.length();i++){
+        if(A[i]!=' '){
+            t=t+A[i];
+        }
+        else{
+            if(t.length()>=1)
+            a.push_back(t);
+            t="";
+        }
+        
+        
+    }
+    a.push_back(t);
+    t="";
+    for(int i=a.size()-1;i>=0;i--){
+        t+=a[i];
+        if(i!=0)
+        t+=' ';
+        
+    }
+    return t;
+    
+    
+    
+    return t;
+    
+    
+}

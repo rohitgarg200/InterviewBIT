@@ -1,0 +1,13 @@
+int Solution::gcd(int A, int B) {
+    int y=min(A,B);
+    if(y==0){
+        return max(A,B);
+    }
+    for(int i=y;i>=1;i--){
+        if(A%i==0 && B%i==0){
+            return i;
+        }
+    }
+    return 1;
+    
+}

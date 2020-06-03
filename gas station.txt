@@ -1,0 +1,33 @@
+int Solution::canCompleteCircuit(const vector<int> &A, const vector<int> &B) {
+    vector<int>c(A.size(),0);
+    for(int i=0;i<A.size();i++){
+        c[i]=A[i]-B[i];
+    }
+    int start=0;
+    int bal=0;
+    int last=A.size();
+    if(last==1){
+        return 0;
+    }
+    int last1=0;
+    int ans=0;
+    while(start<last){
+        bal+=c[start];
+        if(bal<0){
+            bal=0;
+            last1=start;
+            ans=start+1;
+        }
+        start++;
+    }
+    int i=0;
+    while(i<=last1 && last1>=0){
+        bal+=c[i];
+        i++;
+        
+    }
+    if(bal<0){
+        return -1;
+    }
+    return ans;
+}

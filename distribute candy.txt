@@ -1,0 +1,34 @@
+int Solution::candy(vector<int> &A) {
+    if(A.size()<=1){
+        return A.size();
+    }
+    int sum=0;
+    int i=0;
+    //int count=0,count1=0;
+    vector<int>b(A.size(),0);
+    vector<int>c(A.size(),0);
+    b[0]=1;
+    for(int i=0;i<A.size()-1;i++){
+        if(A[i]<A[i+1]){
+            b[i+1]=b[i]+1;
+        }else{
+            b[i+1]=1;
+        }
+    }
+    c[A.size()-1]=1;
+    for(int i=A.size()-2;i>=0;i--){
+        if(A[i]>A[i+1]){
+            c[i]=1+c[i+1];
+        }
+        else{
+            c[i]=1;
+        }
+    
+    }
+    for(int i=0;i<A.size();i++){
+        sum+=max(b[i],c[i]);
+    }
+    return sum;
+    
+    
+}

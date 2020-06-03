@@ -1,0 +1,10 @@
+int Solution::sqrt(int A) {
+if(A==0)
+return 0;
+int ans;
+for(int i=1;i<=A/i;i++)
+ans=i;
+
+return ans;
+
+}

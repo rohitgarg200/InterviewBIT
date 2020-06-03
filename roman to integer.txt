@@ -1,0 +1,33 @@
+int Solution::romanToInt(string A) {
+    unordered_map<char,int>a;
+    if(A.length()==0){
+        return 0;
+    }
+    
+    a.insert({'I',1});
+    a.insert({'V',5});
+    a.insert({'X',10});
+    a.insert({'L',50});
+    a.insert({'C',100});
+    a.insert({'D',500});
+    a.insert({'M',1000});
+    if(A.length()==1){
+        return a[A[0]];
+    }
+    int i=0;
+    int size=A.length();
+    int res=0;
+    
+    while(i!=A.length()){
+        if(i!=A.length()-1 && a[A[i]]<a[A[i+1]]){
+            res=res-a[A[i]];
+        }else{
+            res=res+a[A[i]];
+        }
+        i++;
+    }
+    
+    return res;
+    
+    
+}

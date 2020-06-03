@@ -1,0 +1,15 @@
+int Solution::solve(vector<int> &A, vector<int> &B, vector<int> &C) {
+    int index1=0,index2=0,index3=0;
+    int ans=INT_MAX;
+    while(index1<A.size() && index2<B.size() && index3<C.size()){
+    ans=min(ans,abs(max({A[index1],B[index2],C[index3]})-min({A[index1],B[index2],C[index3]})));
+    if(A[index1]<=B[index2] && A[index1]<=C[index3]){
+        index1++;
+    }else if(B[index2]<=C[index3] && B[index2]<=A[index1]){
+        index2++;
+    }else if(C[index3]<=B[index2] && C[index3]<=A[index1]){
+        index3++;
+    }
+    }
+    return ans;
+}

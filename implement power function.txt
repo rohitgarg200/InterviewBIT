@@ -1,0 +1,24 @@
+int Solution::pow(int x, int n, int d) {
+    if(x==0){
+        return 0;
+    }
+    if(n==0){
+        return 1%d;
+    }
+    x=x%d;
+    x=(d+x)%d;
+    long long int res=x;
+    int i=2;
+    while(n>=i){
+        res=(res%d)*(res%d);
+        res=res%d;
+        i=i*2;
+        
+    }
+   return (res*pow(x,n-i/2,d)%d)%d;
+    return (res+d)%res;
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+}

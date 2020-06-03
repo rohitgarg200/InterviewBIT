@@ -1,0 +1,40 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ int ans=1;
+ bool ans1(TreeNode* a,TreeNode* b){
+     if(a==NULL && b==NULL){
+        // cout<<1;
+         return 1;
+     }
+     if(a==NULL && b!=NULL){
+         ans=0;
+         //cout<<2;
+         return 0;
+         //return 0;
+     }
+     if(a!=NULL && b==NULL){
+         ans=0;
+         //cout<<3;
+         return 0;
+     }
+     if(a!=NULL && b!=NULL){
+         if(a->val!=b->val){
+            ans=0;
+          return 0;
+         }
+     }
+     return ans1(a->left,b->left)&&ans1(a->right,b->right);
+     
+ }
+ 
+int Solution::isSameTree(TreeNode* A, TreeNode* B) {
+    return ans1(A,B);
+    
+}

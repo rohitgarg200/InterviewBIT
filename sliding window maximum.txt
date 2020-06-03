@@ -1,0 +1,39 @@
+vector<int> Solution::slidingMaximum(const vector<int> &A, int B) {
+    vector<int>c;
+    if(A.size()<=1){
+        return A;
+    }
+    if(B>A.size()){
+        int max1=A[0];
+        for(int i=0;i<A.size();i++){
+            max1=max(max1,A[i]);
+        }
+        c.push_back(max1);
+        return c;
+        
+        
+    }
+    //int max1=A[0];
+    map<int,int>a;
+   for(int i=0;i<B;i++){
+        a[A[i]]++;
+
+    }
+    c.push_back(a.rbegin()->first);
+    int i=0;
+    for(int j=B;j<A.size();j++){
+        if(a[A[i]]==1){
+            a.erase(A[i]);
+        }
+        else{
+            a[A[i]]--;
+        }
+        a[A[j]]++;
+        c.push_back(a.rbegin()->first);
+        
+        i++;
+        
+    }
+    return c;
+    
+}

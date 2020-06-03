@@ -1,0 +1,14 @@
+int Solution::trailingZeroes(int A) {
+    int i=0;
+    int n=5;
+    if(A<5){
+        return 0;
+    }
+    while((A/n)!=0){
+        i+=A/n;
+        n=n*5;
+    }
+    return i;
+    
+    
+}

@@ -1,0 +1,24 @@
+int Solution::removeDuplicates(vector<int> &A) {
+    if(A.size()==1){
+        return 1;
+    }
+    if(A.size()==0){
+        return 0;
+    }
+    unique(A.begin(),A.end());
+    int val=0;
+    int i=0;
+    while(i<A.size()-1){
+        if(A[i]<A[i+1]){
+            i++;
+        }else{
+            break;
+        }
+    }
+    A.resize(i+1);
+    return A.size();
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+}

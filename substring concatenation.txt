@@ -1,0 +1,43 @@
+vector<int> Solution::findSubstring(string A, const vector<string> &B) {
+
+unordered_map<string,int>mp;
+for(int i=0;i<B.size();i++){
+    if(mp.find(B[i])!=mp.end()){
+        mp[B[i]]++;
+    }
+    else{
+        mp.insert({B[i],1});
+    }
+}
+int l=B[0].size();
+vector<int>c;
+if(B[0].size()*B.size()>A.length()){
+    return c;
+}
+int window=B[0].size()*B.size();
+for(int i=0;i<A.length()-window+1;i++){
+    string temp=A.substr(i,window);
+     unordered_map<string,int>dp=mp;
+    for(int j=0;j<B.size();j++){
+        string t=temp.substr(l*j,l);
+       
+        if(dp.find(t)!=dp.end()){
+            if(dp[t]==1){
+                dp.erase(t);
+            }
+            else{
+                dp[t]--;
+            }
+        }
+        else{
+            break;
+        }
+    }
+    if(dp.empty())
+    c.push_back(i);
+}
+
+    return c;
+    
+    
+}
